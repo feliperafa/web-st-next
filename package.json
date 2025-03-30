@@ -2,13 +2,11 @@
   "name": "nextjs-static-website",
   "version": "1.1.0",
   "private": true,
-  "scripts": {
-    "build": "next build && next export",
-    "dev": "next dev",
-    "fix": "next lint --fix",
-    "lint": "next lint",
-    "start": "next start"
-  },
+ "scripts": {
+  "build": "next build",
+  "start": "next start",
+  "dev": "next dev"
+},
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
