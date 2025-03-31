@@ -37,6 +37,6 @@ jobs:
       with:
         azcliversion: 2.70.0
         inlineScript: |
-           az storage blob upload-batch --account-name ${{ env.container }} --destination '$web' --source ./out/
+           az storage blob upload-batch --overwrite --account-name ${{ env.container }} --destination '$web' --source ./out/
            
          
