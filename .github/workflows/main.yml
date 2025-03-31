@@ -17,10 +17,10 @@ jobs:
     - name: getting the code
       uses: actions/checkout@v2
 
-    - name: seting up node 19
+    - name: seting up node 20
       uses: actions/setup-node@v2
       with:
-        node-version: '19'    
+        node-version: '20'    
 
     - name: executing npm install and npm run build
       run: |
