@@ -26,7 +26,6 @@ jobs:
       run: |
         npm i
         npm run build
-        npm run export
 
     - name: Azure Login - Conectando com Credenciais no Azure
       uses: Azure/login@v1
