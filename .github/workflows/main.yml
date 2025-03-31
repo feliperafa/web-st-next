@@ -15,7 +15,7 @@ jobs:
 
   steps:
     - name: getting the code
-    uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
     - name: seting up node 20
       uses: actions/setup-node@v2
@@ -33,10 +33,10 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Az - uploading files
-    uses: azure/CLI@v1
-    with:
-    azcliversion: 2.0.72
-    inlineScript: |
-    az storage blob upload-batch --account-name ${{ env.container }} --destination '$web' --source ./out/
+      uses: azure/CLI@v1
+      with:
+      azcliversion: 2.0.72
+      inlineScript: |
+        az storage blob upload-batch --account-name ${{ env.container }} --destination '$web' --source ./out/
 
 
