@@ -4,39 +4,39 @@ on:
 workflow_dispatch:
 push:
 branches:
--main
+- main
 
 jobs:
-build-and-deploy:
-name: Build and Upload to Azure Blob Storage
-runs-on: ubuntu-latest
-env:
-container: "stnextwebapp"
+  build-and-deploy:
+    name: Build and Upload to Azure Blob Storage
+    runs-on: ubuntu-latest
+    env:
+      container: "stnextwebapp"
 
-steps:
-- name: getting the code
-uses: actions/checkout@v2
+  steps:
+    - name: getting the code
+    uses: actions/checkout@v2
 
-- name: seting up node 20
-uses: actions/setup-node@v2
-with:
-node-version: '20'
+    - name: seting up node 20
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
 
-- name: executing npm install and npm run build
-run: 
-npm i
-npm run build
+    - name: executing npm install and npm run build
+      run: 
+        npm i
+        npm run build
 
-- name: Azure login - conectando com Credenciais no azure
-uses: Azure/login@v1
-with:
-creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Azure login - conectando com Credenciais no azure
+      uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-- name: Az - uploading files
-uses: azure/CLI@v1
-with:
-azcliversion: 2.0.72
-inlineScript: |
-az storage blob upload-batch --account-name ${{ env.container }} --destination '$web' --source ./out/
+    - name: Az - uploading files
+    uses: azure/CLI@v1
+    with:
+    azcliversion: 2.0.72
+    inlineScript: |
+    az storage blob upload-batch --account-name ${{ env.container }} --destination '$web' --source ./out/
 
 
